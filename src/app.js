@@ -11,6 +11,7 @@ const app = new Koa();
 import bcrypt from 'bcrypt';
 const auth = require('./helpers/auth');
 const bodyParser = require('koa-bodyparser');
+const rpn = require('request-promise-native');
 
 require ('./db/connection');
 
@@ -103,6 +104,30 @@ router.post(
         await next;
     }
 );
+router.post(
+    '/car/request',
+    async function (ctx, next) {
+        const user = await auth.authenticate(ctx.request.headers.authorization);
+        ctx.assert(user, 401);
+        const options = {
+            method: 'POST',
+            uri: ' https://www.oscaro.com/Catalog/SearchEngine/LicencePlateJQueryV2',
+            body: {
+                frenchLicencePlate: ctx.request.body.plate
+            },
+            json: true // Automatically stringifies the body to JSON
+        };
+        const requestedCar = await rpn(options);
+        ctx.assert(requestedCar, 401);
+        const group = requestedCar.types[0].Text.split(' ');
+        ctx.body = {
+            Mark: group[0],
+            Model: group[1]
+        };
+        await next;
+    }
+);
+
 
 router.get(
     '/static/department',
@@ -112,4 +137,4 @@ router.get(
     }
 );
 
-app.listen(3000);
+app.listen(4004);
