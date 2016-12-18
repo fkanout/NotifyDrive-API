@@ -52,7 +52,8 @@ router.post(
             password: bcrypt.hashSync(ctx.request.body.password, bcrypt.genSaltSync(10))
         });
         ctx.assert(userCreated, 500, 'User not created');
-        ctx.status = 201;
+        const token = jwt.sign({userId: userCreated._id});
+        ctx.body = {token: token};
         await next;
     });
 router.get(
