@@ -166,11 +166,11 @@ router.post(
 
         for (let deviceToken of devices)
             if (deviceToken.token)
-                await AMQP.publish({
+                await AMQP.publish(JSON.stringify({
                     token: deviceToken.token,
                     title: "Notify Driver",
                     body: `Message concernant votre voiture dons la plaque d'immatriculation est ${car.plate}: ${msgSelected}`
-                },process.env.QUEUE);
+                }),process.env.QUEUE);
 
 
         await next;
