@@ -5,6 +5,7 @@
 const open = require('amqplib').connect(process.env.AMQP);
 
 const publish = async function(data, queue){
+    console.log(data, queue);
     open.then(function (conn){
         let ok = conn.createChannel();
         ok = ok.then(function (ch){
