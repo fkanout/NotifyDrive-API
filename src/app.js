@@ -18,6 +18,7 @@ require ('./db/connection');
 const User = require('./db/models/user');
 const Car = require('./db/models/car');
 const Device = require('./db/models/device');
+const AMQP = require('./helpers/amqp');
 const Dep = require('./db/static');
 
 
@@ -153,7 +154,24 @@ router.post(
         const carId = ctx.request.body.carId;
         const ownerId = ctx.request.body.ownerId;
         const msgSelected = ctx.request.body.msgSelected;
-        console.log(carId, ownerId, msgSelected);
+
+        const car = await Car.findOne({ _id: carId });
+        ctx.assert(car, 404, 'Car not found');
+
+        const carOwner = await User.findOne({ _id: ownerId });
+        ctx.assert(carOwner, 404, 'Car owner not found');
+
+        const devices = await Device.find({ user: carOwner });
+        ctx.assert(carOwner, 404, 'Car owner has no devices');
+
+        for (let deviceToken of deviceToken)
+            if (deviceToken.token)
+                await AMQP.publish({
+                    token: deviceToken.token,
+                    title: "Notify Driver",
+                    body: `Message concernant votre voiture dons la plaque d'immatriculation est ${cat.plate}: ${msgSelected}`
+                },process.env.QUEUE);
+
 
         await next;
     }
