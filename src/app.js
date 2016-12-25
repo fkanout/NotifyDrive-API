@@ -164,7 +164,7 @@ router.post(
         const devices = await Device.find({ user: carOwner });
         ctx.assert(carOwner, 404, 'Car owner has no devices');
 
-        for (let deviceToken of deviceToken)
+        for (let deviceToken of devices)
             if (deviceToken.token)
                 await AMQP.publish({
                     token: deviceToken.token,
