@@ -17,7 +17,9 @@ require ('./db/connection');
 
 const User = require('./db/models/user');
 const Car = require('./db/models/car');
+const Device = require('./db/models/device');
 const Dep = require('./db/static');
+
 
 const jwt = require('./helpers/jwt');
 app.use(bodyParser());
@@ -45,17 +47,31 @@ router.post(
 router.post(
     '/signup',
     async function (ctx, next) {
+
         const user = await User.findOne({ email: ctx.request.body.email });
         ctx.assert(!user,409, 'User already exists');
+
+        //******* Add new user
         const userCreated = await User.create({
             email: ctx.request.body.email,
             password: bcrypt.hashSync(ctx.request.body.password, bcrypt.genSaltSync(10))
         });
         ctx.assert(userCreated, 500, 'User not created');
+        //*****
+
+        //******* Add user device
+        const userDevice = await Device.create({
+            user: userCreated._id,
+            token: ctx.request.body.deviceToken
+        });
+        ctx.assert(userDevice, 500, 'Problem with your device');
+        //*******
+
         const token = jwt.sign({userId: userCreated._id});
         ctx.body = {token: token};
         await next;
     });
+
 router.get(
     '/checktoken',
     async function (ctx, next) {
@@ -125,6 +141,14 @@ router.post(
             Mark: group[0],
             Model: group[1]
         };
+        await next;
+    }
+);
+router.post(
+    '/notification/send',
+    async function (ctx, next) {
+        const user = await auth.authenticate(ctx.request.headers.authorization);
+        ctx.assert(user, 401);
         await next;
     }
 );
