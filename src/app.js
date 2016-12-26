@@ -111,9 +111,9 @@ router.post(
         //todo add Joi to validate body
         const newCarToAdd = await Car.create({
             plate:  ctx.request.body.plate,
-            // mark: ctx.request.body.mark,
-            // year: ctx.request.body.year,
-            // model: ctx.request.body.model,
+            mark: ctx.request.body.mark,
+            year: ctx.request.body.year,
+            model: ctx.request.body.model,
             owner: user.userId,
             department: ctx.request.body.department
         });
