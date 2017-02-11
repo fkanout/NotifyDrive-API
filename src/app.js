@@ -35,7 +35,6 @@ router.post(
         //     err => ctx.assert(null, 403),
         //     ()  => console.log('done')
         // );
-        console.log(ctx.request.body);
         const user = await User.findOne({ email: ctx.request.body.email });
         ctx.assert(user,401);
         const password = bcrypt.compareSync(ctx.request.body.password, user.password);
@@ -161,8 +160,8 @@ router.post(
         const carOwner = await User.findOne({ _id: ownerId });
         ctx.assert(carOwner, 404, 'Car owner not found');
 
-        const devices = await Device.find({ user: carOwner });
-        ctx.assert(carOwner, 404, 'Car owner has no devices');
+        const devices = await Device.find({ user: carOwner._id });
+        ctx.assert(devices, 404, 'Car owner has no devices');
 
         for (let deviceToken of devices)
             if (deviceToken.token)
