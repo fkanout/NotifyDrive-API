@@ -160,7 +160,7 @@ router.post(
         const carOwner = await User.findOne({ _id: ownerId });
         ctx.assert(carOwner, 404, 'Car owner not found');
 
-        const devices = await Device.find({ user: carOwner._id });
+        const devices = await Device.find({ userId: carOwner._id });
         ctx.assert(devices, 404, 'Car owner has no devices');
 
         for (let deviceToken of devices)
