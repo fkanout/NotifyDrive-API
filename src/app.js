@@ -61,7 +61,7 @@ router.post(
 
         //******* Add user device
         const userDevice = await Device.create({
-            user: userCreated._id,
+            userId: userCreated._id,
             token: ctx.request.body.deviceToken
         });
         ctx.assert(userDevice, 500, 'Problem with your device');
