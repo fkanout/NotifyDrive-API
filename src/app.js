@@ -79,12 +79,10 @@ router.get(
         ctx.assert(authorization, 401, 'Not correct header');
         try{
             await jwt.verify(authorization);
+            ctx.body = {success: true};
         } catch (err){
             ctx.assert(null, 401, 'Not valid token');
         }
-        ctx.body ={
-            validToken: true
-        };
         await next;
     }
 );
