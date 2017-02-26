@@ -142,6 +142,17 @@ router.post(
         await next;
     }
 );
+router.get(
+    '/car/getmycars',
+    async function (ctx, next) {
+        const user = await auth.authenticate(ctx.request.headers.authorization);
+        ctx.assert(user, 401);
+        const cars = await Car.find({ owner: user._id });
+        ctx.assert(car, 409);
+        ctx.body = cars;
+        await next;
+    }
+);
 router.post(
     '/notifydriver',
     async function (ctx, next) {
