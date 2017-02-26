@@ -147,8 +147,8 @@ router.get(
     async function (ctx, next) {
         const user = await auth.authenticate(ctx.request.headers.authorization);
         ctx.assert(user, 401);
-        const cars = await Car.find({ owner: user._id });
-        ctx.assert(car, 409);
+        const cars = await Car.find({ owner: user.userId });
+        ctx.assert(cars, 409);
         ctx.body = cars;
         await next;
     }
