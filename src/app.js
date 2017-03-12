@@ -17,6 +17,8 @@ require ('./db/connection');
 
 const User = require('./db/models/user');
 const Car = require('./db/models/car');
+const NotificationsHistory = require('./db/models/notificationsHistory');
+
 const Device = require('./db/models/device');
 const AMQP = require('./helpers/amqp');
 const Dep = require('./db/static');
@@ -156,6 +158,7 @@ router.get(
 router.post(
     '/notifydriver',
     async function (ctx, next) {
+
         const user = await auth.authenticate(ctx.request.headers.authorization);
         ctx.assert(user, 401);
 
@@ -171,16 +174,40 @@ router.post(
 
         const devices = await Device.find({ userId: carOwner._id });
         ctx.assert(devices, 404, 'Car owner has no devices');
-
-        for (let deviceToken of devices)
-            if (deviceToken.token)
+        
+        let devicesId = [];
+        for (let device of devices)
+            if (device.token){
                 await AMQP.publish(JSON.stringify({
-                    token: deviceToken.token,
+                    token: device.token,
                     title: "Notify Driver",
                     body: `Message concernant votre voiture dons la plaque d'immatriculation est ${car.plate}: ${msgSelected}`
                 }),process.env.QUEUE);
-
+                devicesId.push(device._id);
+            }
+        await NotificationsHistory.create({
+            senderId: user.userId,
+            receiverId: carOwner._id,
+            sentMsg: msgSelected,
+            carPlate: car.plate,
+            receivedDevices: devicesId
+        });
         ctx.body = {success: true};
+        await next;
+    }
+);
+
+router.get(
+    '/getReceivedNotifications',
+    async function (ctx, next) {
+
+        const user = await auth.authenticate(ctx.request.headers.authorization);
+        ctx.assert(user, 401);
+
+        const receivedNotifications = await NotificationsHistory.find({ receiverId: user.userId });
+        ctx.assert(receivedNotifications, 401);
+
+        ctx.body = receivedNotifications;
         await next;
     }
 );

@@ -1,0 +1,31 @@
+const mongoose = require("mongoose");
+
+const NotificationsHistory = new mongoose.Schema({
+    senderId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    receiverId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    sentMsg: {
+        type: String,
+    },
+    sentDate: {
+        type: Date,
+        default: new Date()
+    },
+    carPlate: {
+        type: String,
+        required: true,
+        index: true,
+    },
+    receivedDevices: [{ 
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Device'
+        }]
+
+});
+
+module.exports = mongoose.model('NotificationsHistory', NotificationsHistory);
