@@ -24,7 +24,8 @@ const NotificationsHistory = new mongoose.Schema({
     receivedDevices: [{ 
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Device'
-        }]
+        }],
+    geoLocation: Point
 
 });
 
