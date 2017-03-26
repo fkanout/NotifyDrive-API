@@ -165,8 +165,6 @@ router.post(
         const carId = ctx.request.body.carId;
         const ownerId = ctx.request.body.ownerId;
         const msgSelected = ctx.request.body.msgSelected;
-        const geoLocation = ctx.request.body.geoLocation;
-
         const car = await Car.findOne({ _id: carId });
         ctx.assert(car, 404, 'Car not found');
 
@@ -192,7 +190,10 @@ router.post(
             sentMsg: msgSelected,
             carPlate: car.plate,
             receivedDevices: devicesId,
-            geoLocation
+            geoLocation:{
+                lat: ctx.request.body.lat,
+                log: ctx.request.body.log
+            }
         
         });
         ctx.body = {success: true};
