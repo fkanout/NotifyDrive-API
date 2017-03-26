@@ -27,6 +27,7 @@
     "koa-bodyparser": "^3.2.0",
     "koa-router": "^7.0.1",
     "mongoose": "^4.6.1",
+    "mongoose-geojson-schema": "^2.1.2",
     "request": "^2.75.0",
     "request-promise-native": "^1.0.3",
     "rxjs": "^5.0.0-beta.12"

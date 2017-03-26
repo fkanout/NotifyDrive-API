@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var GeoJSON = require('mongoose-geojson-schema');
 
 const NotificationsHistory = new mongoose.Schema({
     senderId:{
@@ -25,8 +26,7 @@ const NotificationsHistory = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Device'
         }],
-    geoLocation: Point
-
+    geoLocation: mongoose.Schema.Types.Point,
 });
 
 module.exports = mongoose.model('NotificationsHistory', NotificationsHistory);
