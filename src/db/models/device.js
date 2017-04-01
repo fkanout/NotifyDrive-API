@@ -18,7 +18,8 @@ const Device = new mongoose.Schema({
     token:{
         type: String,
         required: false
-    }
+    },
+    deviceInfo: Object
 });
 
 module.exports = mongoose.model('Device', Device);

@@ -45,7 +45,10 @@ router.post(
         ctx.assert(token, 500, 'Token problem');
         var deviceQuery = { deviceInfo: { uuid: ctx.request.body.device.uuid} } ;
 
-        const device = await Device.findOneAndUpdate(deviceQuery, {token: ctx.request.body.deviceToken, deviceInfo: ctx.request.body.device }, { new: true, upsert: true });
+        const device = await Device.findOneAndUpdate(deviceQuery, { token: ctx.request.body.deviceToken, 
+                                                                    deviceInfo: ctx.request.body.device, 
+                                                                    userId: user._id 
+                                                                }, { new: true, upsert: true });
         console.log(device);
         ctx.body = {token: token};
         await next;
