@@ -26,8 +26,12 @@ const NotificationsHistory = new mongoose.Schema({
         }],
     geoLocation: { 
         lat: Number, 
-        log: Number
+        log: Number,
+        fullAddress: Object,
+        formatedAddress: String
     }
+
+
 });
 
 module.exports = mongoose.model('NotificationsHistory', NotificationsHistory);
