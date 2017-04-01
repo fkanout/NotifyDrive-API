@@ -23,7 +23,7 @@ const Device = require('./db/models/device');
 const AMQP = require('./helpers/amqp');
 const Dep = require('./db/static');
 
-
+const getAddress = require('./helpers/getAddress');
 const jwt = require('./helpers/jwt');
 app.use(bodyParser());
 app.use(router.routes());
@@ -43,6 +43,10 @@ router.post(
         ctx.assert(password, 401, 'Wrong password');
         const token = jwt.sign({ userId: user._id });
         ctx.assert(token, 500, 'Token problem');
+        var deviceQuery = { deviceInfo: { uuid: ctx.request.body.device.uuid} } ;
+
+        const device = await Device.findOneAndUpdate(deviceQuery, {token: ctx.request.body.deviceToken}, { new: true, upsert: true });
+        console.log(device);
         ctx.body = {token: token};
         await next;
     });
@@ -184,6 +188,8 @@ router.post(
                 }),process.env.QUEUE);
                 devicesId.push(device._id);
             }
+        const fullAddress = await getAddress.getAddress(ctx.request.body.lat,ctx.request.body.log);
+        
         await NotificationsHistory.create({
             senderId: user.userId,
             receiverId: carOwner._id,
@@ -192,10 +198,12 @@ router.post(
             receivedDevices: devicesId,
             geoLocation:{
                 lat: ctx.request.body.lat,
-                log: ctx.request.body.log
+                log: ctx.request.body.log,
+                fullAddress: JSON.parse(fullAddress),
+                formatedAddress: JSON.parse(fullAddress).results[0].formatted_address
             }
         
-        });
+            });
         ctx.body = {success: true};
         await next;
     }
@@ -211,6 +219,7 @@ router.get(
         const receivedNotifications = await NotificationsHistory.find({ receiverId: user.userId });
         ctx.assert(receivedNotifications, 401);
 
+    
         ctx.body = receivedNotifications;
         await next;
     }
