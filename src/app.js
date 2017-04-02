@@ -228,6 +228,22 @@ router.get(
     }
 );
 
+router.get(
+    '/getSentNotifications',
+    async function (ctx, next) {
+
+        const user = await auth.authenticate(ctx.request.headers.authorization);
+        ctx.assert(user, 401);
+
+        const receivedNotifications = await NotificationsHistory.find({ senderId: user.userId });
+        ctx.assert(receivedNotifications, 401);
+
+    
+        ctx.body = receivedNotifications;
+        await next;
+    }
+);
+
 
 router.get(
     '/static/department',
