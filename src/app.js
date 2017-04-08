@@ -228,12 +228,48 @@ router.get(
     }
 );
 
+router.post(
+    '/evaluateDriver',
+    async function(ctx, next){
+
+        const user = await auth.authenticate(ctx.request.headers.authorization);
+        ctx.assert(user, 401);
+        
+        const carId = ctx.request.body.carId;
+        const ownerId = ctx.request.body.ownerId;
+        let car;
+        
+        // todo Optimisation;
+        if (ctx.request.body.evaluation === "positive"){
+             car = await Car.update(
+                { _id: carId },
+                {'$addToSet': {
+                    'evaluation.positive': user.userId
+                }
+            });
+        }else{
+            car = await Car.update(
+                { _id: carId },
+                {'$addToSet': {
+                    'evaluation.negative': user.userId
+                }
+            });
+        }     
+        ctx.assert(car, 404, 'Car not found')
+        ctx.body = car;
+        await next;
+    }
+)
+
 router.get(
     '/getSentNotifications',
     async function (ctx, next) {
 
         const user = await auth.authenticate(ctx.request.headers.authorization);
         ctx.assert(user, 401);
+        
+        const carId = ctx.request.body.carId;
+        const ownerId = ctx.request.body.ownerId;
 
         const receivedNotifications = await NotificationsHistory.find({ senderId: user.userId });
         ctx.assert(receivedNotifications, 401);
@@ -243,6 +279,9 @@ router.get(
         await next;
     }
 );
+router.post(
+    '/setPosotive'
+)
 
 
 router.get(

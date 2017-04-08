@@ -36,6 +36,16 @@ const Car = new mongoose.Schema({
     department:{
         type: Number,
         required: false
+    },
+    evaluation: {
+        positive: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }],
+        negative: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }]
     }
 });
 
