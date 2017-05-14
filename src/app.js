@@ -25,7 +25,7 @@ const imageCRM = require('./helpers/imageCRM').imageCRM;
 
 const Dep = require('./db/static');
 const proxy = require('koa-proxy');
-
+const fs = require('fs');
 const getAddress = require('./helpers/getAddress');
 const jwt = require('./helpers/jwt');
 app.use(bodyParser());
