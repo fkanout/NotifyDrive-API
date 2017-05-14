@@ -21,7 +21,10 @@ const NotificationsHistory = require('./db/models/notificationsHistory');
 
 const Device = require('./db/models/device');
 const AMQP = require('./helpers/amqp');
+const imageCRM = require('./helpers/imageCRM').imageCRM;
+
 const Dep = require('./db/static');
+const proxy = require('koa-proxy');
 
 const getAddress = require('./helpers/getAddress');
 const jwt = require('./helpers/jwt');
@@ -283,13 +286,26 @@ router.post(
     '/setPosotive'
 )
 
+router.post(
+    '/imagecrm',
+    async function (ctx, next) {
+        const user = await auth.authenticate(ctx.request.headers.authorization);
+        ctx.assert(user, 401);
+        const plateFromImg = await imageCRM(ctx.request.body.image);
+        console.log(plateFromImg);
+        ctx.body = plateFromImg;
+    }
+)
+
 
 router.get(
-    '/static/department',
+    '/dep',
     async function (ctx, next) {
         ctx.body = Dep;
         await next;
     }
 );
-
+/*app.use(proxy({
+  host: 'http://0.0.0.0'
+}));*/
 app.listen(3003);
