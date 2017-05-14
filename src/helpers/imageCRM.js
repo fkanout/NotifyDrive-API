@@ -17,4 +17,4 @@ const imageCRM = async (image) =>{
 
     }
 }
-module.export.imageCRM = imageCRM;
+module.exports.imageCRM = imageCRM;
