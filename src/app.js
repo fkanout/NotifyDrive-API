@@ -289,8 +289,9 @@ router.post(
 router.post(
     '/imagecrm',
     async function (ctx, next) {
-        const user = await auth.authenticate(ctx.request.headers.authorization);
-        ctx.assert(user, 401);
+        // const user = await auth.authenticate(ctx.request.headers.authorization);
+        // ctx.assert(user, 401);
+        console.log(ctx.request.body.image);
         const plateFromImg = await imageCRM(ctx.request.body.image);
         console.log(plateFromImg);
         ctx.body = plateFromImg;
