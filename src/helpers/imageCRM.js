@@ -12,6 +12,20 @@ const rpn = require('request-promise-native');
 
 // Performs label detection on the image file
 const imageCRM = async (image) =>{
+    const body = {
+             "requests": [
+                {
+                "image": {
+                    "content": image
+                },
+                "features": [
+                    {
+                    "type": "TEXT_DETECTION"
+                    }
+                ]
+                }
+            ]
+        };
     try{
         return await rpn.post({
             url: 'https://vision.googleapis.com/v1/images:annotate',
@@ -24,6 +38,7 @@ const imageCRM = async (image) =>{
             body: JSON.stringify(body)
         });
     }catch(err){
+        console.log('here');
         console.log(err);
 
     }
