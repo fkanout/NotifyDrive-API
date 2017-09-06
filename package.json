@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/**/**.spec.js",
     "start": "node bin/app.js",
     "dev": "nodemon bin/app.js"
   },
