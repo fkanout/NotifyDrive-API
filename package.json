@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "babel src -d lib && babel-watch src/app.js",
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "start": "node bin/app.js"
   },
   "author": "Faisal KANOUT",
   "license": "ISC",
