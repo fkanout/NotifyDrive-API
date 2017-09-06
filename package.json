@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/app.js"
+    "start": "node bin/app.js",
+    "dev": "nodemon bin/app.js"
   },
   "author": "Faisal KANOUT",
   "license": "ISC",
