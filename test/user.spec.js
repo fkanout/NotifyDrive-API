@@ -1,26 +1,15 @@
 process.env.NODE_ENV = 'TEST';
-
 require('dotenv').config();
 require('../lib/db/connection');
-
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../lib/index');
 const User = require('../lib/db/models/user');
-const mongoose = require('mongoose');
 
 const should = chai.should();
 chai.use(chaiHttp);
 
-const mochaAsync = fn => async (done) => {
-  try {
-    await fn();
-    done();
-  } catch (err) {
-    done(err);
-  }
-};
 describe('User', () => {
   before((done) => {
     User.remove({}, (err) => {
@@ -43,9 +32,20 @@ describe('User', () => {
           done();
         });
     });
+    it('Should NOT create new user with same email address', (done) => {
+      chai
+        .request(server)
+        .post('/signup')
+        .set('content-type', 'application/x-www-form-urlencoded')
+        .send({ email: 'test@test.test', password: '123' })
+        .end((err, res) => {
+          res.status.should.eql(409);
+          done();
+        });
+    });
   });
   describe('POST /signin', () => {
-    it('Should signin and get a token', (done) => {
+    it('Should sign in and get a token', (done) => {
       chai
         .request(server)
         .post('/signin')
@@ -56,6 +56,30 @@ describe('User', () => {
           should.not.exist(err);
           res.body.should.have.property('token');
           res.type.should.eql('application/json');
+          done();
+        });
+    });
+    it('Should NOT sign in with correct email AND wrong password', (done) => {
+      chai
+        .request(server)
+        .post('/signin')
+        .set('content-type', 'application/x-www-form-urlencoded')
+        .send({ email: 'test@test.test', password: '321', device: '1234567890AZERTYUIOP' })
+        .end((err, res) => {
+          should.exist(err);
+          res.status.should.eql(401);
+          done();
+        });
+    });
+    it('Should NOT sign in with wrong credentials', (done) => {
+      chai
+        .request(server)
+        .post('/signin')
+        .set('content-type', 'application/x-www-form-urlencoded')
+        .send({ email: 'test@notest.test', password: '321', device: '1234567890AZERTYUIOP' })
+        .end((err, res) => {
+          should.exist(err);
+          res.status.should.eql(401);
           done();
         });
     });
