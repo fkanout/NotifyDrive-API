@@ -32,6 +32,8 @@ For example, a user can alert a car's owner that his car is being stolen or that
 
 `Docker` Software container platform
 
+`Travis CI` Continuous integration platform
+
 # ENV variables
 
 `MONGO_DB_URL` DB connection URL
