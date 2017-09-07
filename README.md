@@ -29,6 +29,23 @@ For example, a user can alert a car's owner that his car is being stolen or that
 
 `Docker` Software container platform
 
+# ENV variables
+
+`MONGO_DB_URL` DB connection URL
+
+`MONGO_DB_URL_TEST` DB connection URL (Test DB)
+
+`PASSPHRASE` Token signature
+
+`AMQP` RabbitMQ connection URL
+
+`QUEUE` Queue name for push notification
+
+`ENV` Environment variable (`DEV | PROD`)
+
+`NODE_ENV` Node environment variable (`TEST, DEV`)
+
+
 # Who am I
 
 [Website](https://www.kanout.com)
