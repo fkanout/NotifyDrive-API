@@ -1,2 +1,3 @@
 require('./user.spec');
-require('./cars.spec');
+require('./car.spec');
+require('./notification.spec');

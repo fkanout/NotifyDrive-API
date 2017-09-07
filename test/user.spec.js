@@ -84,4 +84,34 @@ describe('User', () => {
         });
     });
   });
+  describe('CHECK TOKEN', () => {
+    let token = '';
+    before((done) => {
+      chai
+        .request(server)
+        .post('/signin')
+        .set('content-type', 'application/x-www-form-urlencoded')
+        .send({ email: 'test@test.test', password: '123', device: '1234567890AZERTYUIOP' })
+        .end((err, res) => {
+          should.not.exist(err);
+          res.body.should.have.property('token');
+          res.type.should.eql('application/json');
+          const result = JSON.parse(res.text);
+          token = result.token;
+          done();
+        });
+    });
+    it('Shoud valide the sent Token in header and return success', (done) => {
+      chai
+        .request(server)
+        .get('/checktoken')
+        .set('Authorization', token)
+        .end((err, res) => {
+          should.not.exist(err);
+          res.status.should.eql(200);
+          res.body.should.have.property('success', true);
+          done();
+        });
+    });
+  });
 });
