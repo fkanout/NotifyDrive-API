@@ -19,7 +19,7 @@ describe('Car', () => {
       .request(server)
       .post('/signin')
       .set('content-type', 'application/x-www-form-urlencoded')
-      .send({ email: 'test@test.test', password: '123', device: '1234567890AZERTYUIOP' })
+      .send({ email: 'test@test.test', password: '123', device: { uuid: '1234567890ABCDEFG' } })
       .end((err, res) => {
         should.not.exist(err);
         res.body.should.have.property('token');

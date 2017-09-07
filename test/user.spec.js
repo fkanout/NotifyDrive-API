@@ -23,7 +23,7 @@ describe('User', () => {
         .request(server)
         .post('/signup')
         .set('content-type', 'application/x-www-form-urlencoded')
-        .send({ email: 'test@test.test', password: '123' })
+        .send({ email: 'test@test.test', password: '123', deviceToken: '1234567890ABCDEFG' })
         .end((err, res) => {
           should.not.exist(err);
           res.status.should.eql(201);
@@ -37,7 +37,7 @@ describe('User', () => {
         .request(server)
         .post('/signup')
         .set('content-type', 'application/x-www-form-urlencoded')
-        .send({ email: 'test@test.test', password: '123' })
+        .send({ email: 'test@test.test', password: '123', deviceToken: '1234567890ABCDEFG' })
         .end((err, res) => {
           res.status.should.eql(409);
           done();
@@ -50,7 +50,7 @@ describe('User', () => {
         .request(server)
         .post('/signin')
         .set('content-type', 'application/x-www-form-urlencoded')
-        .send({ email: 'test@test.test', password: '123', device: '1234567890AZERTYUIOP' })
+        .send({ email: 'test@test.test', password: '123', device: { uuid: '1234567890ABCDEFG' } })
         .end((err, res) => {
           res.status.should.eql(200);
           should.not.exist(err);
@@ -64,7 +64,7 @@ describe('User', () => {
         .request(server)
         .post('/signin')
         .set('content-type', 'application/x-www-form-urlencoded')
-        .send({ email: 'test@test.test', password: '321', device: '1234567890AZERTYUIOP' })
+        .send({ email: 'test@test.test', password: '321', device: { uuid: '1234567890ABCDEFG' } })
         .end((err, res) => {
           should.exist(err);
           res.status.should.eql(401);
@@ -76,7 +76,7 @@ describe('User', () => {
         .request(server)
         .post('/signin')
         .set('content-type', 'application/x-www-form-urlencoded')
-        .send({ email: 'test@notest.test', password: '321', device: '1234567890AZERTYUIOP' })
+        .send({ email: 'test@notest.test', password: '321', device: { uuid: '1234567890ABCDEFG' } })
         .end((err, res) => {
           should.exist(err);
           res.status.should.eql(401);
@@ -91,7 +91,7 @@ describe('User', () => {
         .request(server)
         .post('/signin')
         .set('content-type', 'application/x-www-form-urlencoded')
-        .send({ email: 'test@test.test', password: '123', device: '1234567890AZERTYUIOP' })
+        .send({ email: 'test@test.test', password: '123', device: { uuid: '1234567890ABCDEFG' } })
         .end((err, res) => {
           should.not.exist(err);
           res.body.should.have.property('token');
