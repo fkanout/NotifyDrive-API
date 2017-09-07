@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-- "iojs"
-- "8"
+  - "iojs"
+  - "8"
 services:
   - mongodb
   - rabbitmq
-after_success: 'npm run coveralls'
+after_success: npm run coverage
