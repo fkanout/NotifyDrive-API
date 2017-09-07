@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test/tests.js",
+    "test": "nyc mocha test/tests.js",
     "start": "node bin/app.js",
     "dev": "nodemon bin/app.js"
   },
@@ -18,7 +18,8 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "nyc": "^11.2.1"
   },
   "dependencies": {
     "@google-cloud/vision": "^0.11.2",
