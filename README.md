@@ -42,6 +42,10 @@ For example, a user can alert a car's owner that his car is being stolen or that
 
 `PASSPHRASE` Token signature
 
+`GPSTOADDRESS_URL` GPS to Address microservic's URL
+
+`GPSTOADDRESS_TASK` GPS to Address microservic's task name (inside the HTTP request's header )
+
 `AMQP` RabbitMQ connection URL
 
 `QUEUE` Queue name for push notification
