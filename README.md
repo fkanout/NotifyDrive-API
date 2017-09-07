@@ -1,6 +1,6 @@
 
 # NOTIFY DRIVER - API
-[![Coverage Status](https://coveralls.io/repos/github/fkanout/PushNotification-API/badge.svg?branch=master)](https://coveralls.io/github/fkanout/PushNotification-API?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/fkanout/NotifyDrive-API/badge.svg?branch=master)](https://coveralls.io/github/fkanout/NotifyDrive-API?branch=master)
 [![Build Status](https://travis-ci.org/fkanout/NotifyDrive-API.svg?branch=master)](https://travis-ci.org/fkanout/NotifyDrive-API)
 
 *Notify Driver is a mobile app that allows drivers and road users to get in touch in case a parked car is either disturbing or facing an issue.*
