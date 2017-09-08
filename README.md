@@ -1,5 +1,5 @@
 
-# NOTIFY DRIVER - API :blue_car:
+# NOTIFY DRIVER - API
 [![Coverage Status](https://coveralls.io/repos/github/fkanout/NotifyDrive-API/badge.svg?branch=master&style=flat)](https://coveralls.io/github/fkanout/NotifyDrive-API?branch=master)
 [![Build Status](https://travis-ci.org/fkanout/NotifyDrive-API.svg?branch=master&style=flat)](https://travis-ci.org/fkanout/NotifyDrive-API)
 [![Known Vulnerabilities](https://snyk.io/test/github/fkanout/NotifyDrive-API/badge.svg?style=flat)](https://snyk.io/test/github/fkanout/NotifyDrive-API)
