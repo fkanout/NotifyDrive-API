@@ -83,7 +83,27 @@ describe('Car', () => {
         });
     });
   });
-
+  describe('GET /cars/:plateNumber', () => {
+    it('Should find the car', (done) => {
+      chai
+        .request(server)
+        .get('/cars/ck234dq')
+        .set('Authorization', token)
+        .query('ck234dq')
+        .set('content-type', 'application/x-www-form-urlencoded')
+        .end((err, res) => {
+          should.not.exist(err);
+          res.body.should.have.property('plate', 'ck234dq');
+          res.body.should.have.property('mark', 'RENAULT');
+          res.body.should.have.property('year', 2017);
+          res.body.should.have.property('model', 'Twingo');
+          res.body.should.have.property('department', 92);
+          res.type.should.eql('application/json');
+          res.status.should.eql(200);
+          done();
+        });
+    });
+  });
   describe('GET /cars', () => {
     it('Should return all user\'s car with (A valid token is passed)', (done) => {
       chai
