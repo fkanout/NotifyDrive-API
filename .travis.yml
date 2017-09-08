@@ -4,5 +4,4 @@ node_js:
 services:
   - mongodb
   - rabbitmq
-after_success:
-  - npm run coveralls
+after_success: npm run coverage
