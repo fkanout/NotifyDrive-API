@@ -7,13 +7,14 @@
     "test": "mocha test/tests.js",
     "start": "node bin/app.js",
     "dev": "nodemon bin/app.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"  
+    "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "author": "Faisal KANOUT",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "codecov": "^2.3.0",
     "coveralls": "^2.13.1",
     "eslint": "^4.6.1",
     "eslint-config-airbnb": "^15.1.0",
