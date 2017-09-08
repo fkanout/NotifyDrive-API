@@ -5,9 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha test/tests.js",
+    "cover": "nyc npm test",
     "start": "node bin/app.js",
     "dev": "nodemon bin/app.js",
-    "coverage": "nyc report -R mocha-lcov-reporter > coverage/coverage.lcov && codecov"
+    "coverage": "npm run cover && nyc report -R mocha-lcov-reporter > coverage/coverage.lcov && codecov"
   },
   "author": "Faisal KANOUT",
   "license": "ISC",
