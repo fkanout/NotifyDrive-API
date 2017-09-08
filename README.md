@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/fkanout/NotifyDrive-API.svg?branch=master&style=flat)](https://travis-ci.org/fkanout/NotifyDrive-API)
 [![Known Vulnerabilities](https://snyk.io/test/github/fkanout/NotifyDrive-API/badge.svg?style=flat)](https://snyk.io/test/github/fkanout/NotifyDrive-API)
 [![Dependency Status](https://www.versioneye.com/user/projects/59b2e7ee0fb24f004e1a5ae9/badge.svg?style=flat)](https://www.versioneye.com/user/projects/59b2e7ee0fb24f004e1a5ae9)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 
 *Notify Driver is a mobile app that allows drivers and road users to get in touch in case a parked car is either disturbing or facing an issue.*
