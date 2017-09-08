@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha test/tests.js",
-    "cover": "nyc --require babel-core/register mocha test/tests.js",
+    "cover": "nyc mocha test/tests.js",
     "start": "node bin/app.js",
     "dev": "nodemon bin/app.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
@@ -13,10 +13,6 @@
   "author": "Faisal KANOUT",
   "license": "ISC",
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.0",
-    "babel-plugin-istanbul": "^4.1.4",
-    "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "coveralls": "^2.13.1",
