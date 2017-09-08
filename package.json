@@ -7,7 +7,7 @@
     "test": "mocha test/tests.js",
     "start": "node bin/app.js",
     "dev": "nodemon bin/app.js",
-    "coverage": "nyc report -R mocha-lcov-reporter > coverage/coverage.lcov && codecov -t 54340bd3-50ae-4721-ab63-7acaac0bb970"
+    "coverage": "nyc report -R mocha-lcov-reporter > coverage/coverage.lcov && codecov"
   },
   "author": "Faisal KANOUT",
   "license": "ISC",
