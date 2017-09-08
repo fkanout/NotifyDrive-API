@@ -1,9 +1,10 @@
 
 # NOTIFY DRIVER - API
-[![Coverage Status](https://coveralls.io/repos/github/fkanout/NotifyDrive-API/badge.svg?branch=master)](https://coveralls.io/github/fkanout/NotifyDrive-API?branch=master)
-[![Build Status](https://travis-ci.org/fkanout/NotifyDrive-API.svg?branch=master)](https://travis-ci.org/fkanout/NotifyDrive-API)
-[![Known Vulnerabilities](https://snyk.io/test/github/fkanout/NotifyDrive-API/badge.svg)](https://snyk.io/test/github/fkanout/NotifyDrive-API)
-[![dependencies Status](https://david-dm.org/fkanout/NotifyDrive-API/status.svg)](https://david-dm.org/fkanout/NotifyDrive-API)
+[![Coverage Status](https://coveralls.io/repos/github/fkanout/NotifyDrive-API/badge.svg?branch=master&style=flat-square)](https://coveralls.io/github/fkanout/NotifyDrive-API?branch=master)
+[![Build Status](https://travis-ci.org/fkanout/NotifyDrive-API.svg?branch=master&style=flat-square)](https://travis-ci.org/fkanout/NotifyDrive-API)
+[![Known Vulnerabilities](https://snyk.io/test/github/fkanout/NotifyDrive-API/badge.svg?style=flat-square)](https://snyk.io/test/github/fkanout/NotifyDrive-API)
+[![Dependency Status](https://www.versioneye.com/user/projects/59b2e7ee0fb24f004e1a5ae9/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/59b2e7ee0fb24f004e1a5ae9)
+
 
 *Notify Driver is a mobile app that allows drivers and road users to get in touch in case a parked car is either disturbing or facing an issue.*
 
