@@ -28,14 +28,6 @@ describe('MongoDB', () => {
 });
 describe('RabbitMQ', () => {
   const q = 'testQ';
-  it('Should NOT connect to RabbitMQ with wrong URL', (done) => {
-    require('amqplib').connect()
-      .then()
-      .catch((err) => {
-        should.exist(err);
-        done();
-      });
-  });
   it('Should sent RabbitMQ msg via TEST queue', (done) => {
     amqp.publish('TEST', q).then(() => done());
   });
