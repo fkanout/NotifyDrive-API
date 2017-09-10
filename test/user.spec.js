@@ -1,7 +1,3 @@
-process.env.NODE_ENV = 'TEST';
-require('dotenv').config();
-require('../lib/db/connection');
-
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../lib/index');
