@@ -5,7 +5,6 @@ const chai = require('chai');
 
 const expect = chai.expect;
 
-const amqp = require('../lib/helpers/amqp');
 
 describe('MongoDB', () => {
   it('Should NOT connect to MongoDB with no/wrong URL porvided', (done) => {
