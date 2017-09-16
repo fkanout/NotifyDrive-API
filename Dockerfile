@@ -2,7 +2,6 @@ FROM node:8.4.0
 
 MAINTAINER FaisalKANOUT
 
-
 RUN mkdir -p NotifyDriver-API/
 
 WORKDIR NotifyDriver-API/
