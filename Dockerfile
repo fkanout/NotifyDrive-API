@@ -2,15 +2,15 @@ FROM node:8.4.0
 
 MAINTAINER FaisalKANOUT
 
-RUN mkdir -p NotifyDriver-API/
+RUN mkdir -p /home/notifydriver/API
 
-WORKDIR NotifyDriver-API/
+WORKDIR /home/notifydriver/API
 
-COPY package.json NotifyDriver-API/
+COPY package.json /home/notifydriver/API
 
 RUN npm install
 
-COPY . NotifyDriver-API/
+COPY . /home/notifydriver/API
 
 ENV PORT=3003
 
