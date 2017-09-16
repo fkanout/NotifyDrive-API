@@ -22,7 +22,7 @@ ENV MONGO_DB_URL_TEST=mongodb://ndmongo:27017/db_notifydriver_test
 
 ENV PASSPHRASE=1234567890SECRET
 
-ENV AMQP=amqp://notifydriver:writeread@ndrabbitmq:5672/
+ENV AMQP=amqp://notifydriver:writeread@ndrabbitmq:5672/notifydriver
 
 ENV QUEUE=pushNotification
 
