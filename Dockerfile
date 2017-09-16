@@ -10,7 +10,7 @@ COPY package.json NotifyDriver-API/
 
 RUN npm install
 
-COPY NotifyDriver-API/
+COPY . NotifyDriver-API/
 
 ENV PORT=3003
 
