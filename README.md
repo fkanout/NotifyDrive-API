@@ -1,5 +1,10 @@
 
 # NOTIFY DRIVER - API
+
+[![logo](https://raw.githubusercontent.com/fkanout/NotifyDrive-API/master/assets/logo.png)](https://github.com/fkanout/NotifyDrive-API)
+
+
+
 [![codecov](https://codecov.io/gh/fkanout/NotifyDrive-API/branch/master/graph/badge.svg)](https://codecov.io/gh/fkanout/NotifyDrive-API)
 [![Build Status](https://travis-ci.org/fkanout/NotifyDrive-API.svg?branch=master&style=flat)](https://travis-ci.org/fkanout/NotifyDrive-API)
 [![Known Vulnerabilities](https://snyk.io/test/github/fkanout/NotifyDrive-API/badge.svg?style=flat)](https://snyk.io/test/github/fkanout/NotifyDrive-API)
