@@ -1,8 +1,6 @@
 
 # NOTIFY DRIVER - API
-
-[![logo](https://raw.githubusercontent.com/fkanout/NotifyDrive-API/master/assets/logo.png)](https://github.com/fkanout/NotifyDrive-API)
-
+<img src="https://github.com/fkanout/NotifyDrive-API/raw/f5fa8499493509611fc7fe4df30e5afbfa1ffffc/assets/logo.png" width="250" height="250">
 
 
 [![codecov](https://codecov.io/gh/fkanout/NotifyDrive-API/branch/master/graph/badge.svg)](https://codecov.io/gh/fkanout/NotifyDrive-API)
