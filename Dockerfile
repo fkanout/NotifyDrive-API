@@ -24,6 +24,8 @@ ENV AMQP=amqp://notifydriver:writeread@ndrabbitmq:5672/notifydriver
 
 ENV QUEUE=pushNotification
 
+ENV GPSTOADDRESS_URL=http://gpstoaddressms:9001/geolocation
+
 ENV ENV=DEV
 
 ENV NODE_ENV=DEV
@@ -31,5 +33,3 @@ ENV NODE_ENV=DEV
 EXPOSE 3003
 
 CMD [ "npm", "start" ]
-
-
