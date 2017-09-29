@@ -8,7 +8,9 @@
     "cover": "nyc npm test",
     "start": "node bin/app.js",
     "dev": "nodemon bin/app.js",
-    "codecov": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov"
+    "codecov": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Faisal KANOUT",
   "license": "ISC",
@@ -40,6 +42,8 @@
     "koa2-cors": "^2.0.3",
     "mongoose": "^4.11.10",
     "request": "^2.81.0",
-    "request-promise-native": "^1.0.4"
-  }
+    "request-promise-native": "^1.0.4",
+    "snyk": "^1.41.1"
+  },
+  "snyk": true
 }
