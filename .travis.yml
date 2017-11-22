@@ -4,4 +4,4 @@ node_js:
 services:
   - mongodb
   - rabbitmq
-after_success: travis_wait npm run codecov
+script: travis_wait npm run codecov
