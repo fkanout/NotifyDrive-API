@@ -4,4 +4,3 @@ node_js:
 services:
   - mongodb
   - rabbitmq
-script: npm run codecov
