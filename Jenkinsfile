@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('NPM packages') {
       steps {
-        sh 'npm install'
+        sh '''node --version
+npm install'''
       }
     }
   }
