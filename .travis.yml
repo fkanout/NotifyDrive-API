@@ -7,3 +7,6 @@ services:
 script:
   - npm run cover
   - npm run codecov
+after_script:
+    # killing background process (because dockerized build no longer does it)
+    - kill -9 $(ps aux | grep 'selenium' | awk '{print $2}')
