@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "nyc mocha test/tests.js",
+    "test": "nyc mocha test/tests.js --exit",
     "cover": "nyc npm test",
     "start": "node bin/app.js",
     "dev": "nodemon bin/app.js",
