@@ -2,6 +2,7 @@
 # NOTIFY DRIVER - API
 <img src="https://github.com/fkanout/NotifyDrive-API/raw/f5fa8499493509611fc7fe4df30e5afbfa1ffffc/assets/logo.png" width="250" height="250">
 
+[![CircleCI](https://circleci.com/gh/fkanout/NotifyDrive-API/tree/master.svg?style=svg)](https://circleci.com/gh/fkanout/NotifyDrive-API/tree/master)
 
 [![codecov](https://codecov.io/gh/fkanout/NotifyDrive-API/branch/master/graph/badge.svg)](https://codecov.io/gh/fkanout/NotifyDrive-API)
 [![Build Status](https://travis-ci.org/fkanout/NotifyDrive-API.svg?branch=master&style=flat)](https://travis-ci.org/fkanout/NotifyDrive-API)

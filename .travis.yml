@@ -5,5 +5,5 @@ services:
   - mongodb
   - rabbitmq
 script:
-  - npm run cover
+  - npm run test
   - npm run codecov
