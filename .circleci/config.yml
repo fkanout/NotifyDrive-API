@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/notify-driver-api
     docker:
-      - image: circleci/node::latest
+      - image: circleci/node:latest
       - image: circleci/mongo::latest
         environment:
           MONGODB_DATABASE: "db_notifydriver"
