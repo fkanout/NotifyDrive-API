@@ -7,7 +7,7 @@ jobs:
       - image: circleci/mongo:latest
         environment:
           MONGODB_DATABASE: "db_notifydriver"
-      - image: circleci/rabbitmq
+      - image: rabbitmq:latest
         environment:
           RABBITMQ_DEFAULT_USER: "notifydriver"
           RABBITMQ_DEFAULT_PASS: "writeread"
