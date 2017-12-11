@@ -1,0 +1,22 @@
+version: "3"
+services:
+  web:
+    build: .
+    depends_on:
+      - ndmongo
+      - ndrabbitmq
+    ports:
+      - "3003:3003"
+  ndmongo:
+    image: mongo:latest
+    hostname: "ndmongo"
+    environment:
+      MONGODB_DATABASE: "db_notifydriver"
+  ndrabbitmq:
+    image: "rabbitmq:3-management"
+    hostname: "ndrabbitmq"
+    environment:
+      RABBITMQ_DEFAULT_USER: "notifydriver"
+      RABBITMQ_DEFAULT_PASS: "writeread"
+      RABBITMQ_DEFAULT_VHOST: "/notifydriver"
+    
