@@ -22,4 +22,4 @@ jobs:
           command: npm run cover
       - run:
           name: test
-          command: npm run cover
+          command: npm run codecov
