@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/notify-driver-api
+    docker:
+      - image: circleci/node::latest
+      - image: circleci/mongo::latest
+        environment:
+          MONGODB_DATABASE: "db_notifydriver"
+      - image: circleci/rabbitmq
+        environment:
+          RABBITMQ_DEFAULT_USER: "notifydriver"
+          RABBITMQ_DEFAULT_PASS: "writeread"
+          RABBITMQ_DEFAULT_VHOST: "/notifydriver"
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm-wee
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: test cover
+          command: npm run cover
+      - run:
+          name: test
+          command: npm run cover
