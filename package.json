@@ -8,7 +8,7 @@
     "cover": "nyc npm test",
     "start": "node bin/app.js",
     "dev": "nodemon bin/app.js",
-    "codecov": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov"
+    "codecov": "mkdir coverage && nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov"
   },
   "author": "Faisal KANOUT",
   "license": "ISC",
