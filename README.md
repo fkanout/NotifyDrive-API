@@ -2,10 +2,9 @@
 # NOTIFY DRIVER - API
 <img src="https://github.com/fkanout/NotifyDrive-API/raw/f5fa8499493509611fc7fe4df30e5afbfa1ffffc/assets/logo.png" width="250" height="250">
 
-[![CircleCI](https://circleci.com/gh/fkanout/NotifyDrive-API/tree/master.svg?style=svg)](https://circleci.com/gh/fkanout/NotifyDrive-API/tree/master)
-
 [![codecov](https://codecov.io/gh/fkanout/NotifyDrive-API/branch/master/graph/badge.svg)](https://codecov.io/gh/fkanout/NotifyDrive-API)
 [![Build Status](https://travis-ci.org/fkanout/NotifyDrive-API.svg?branch=master&style=flat)](https://travis-ci.org/fkanout/NotifyDrive-API)
+[![CircleCI](https://circleci.com/gh/fkanout/NotifyDrive-API/tree/master.svg?style=shield)](https://circleci.com/gh/fkanout/NotifyDrive-API/tree/master)
 [![Known Vulnerabilities](https://snyk.io/test/github/fkanout/NotifyDrive-API/badge.svg?style=flat)](https://snyk.io/test/github/fkanout/NotifyDrive-API)
 [![Dependency Status](https://www.versioneye.com/user/projects/59b2e7ee0fb24f004e1a5ae9/badge.svg?style=flat)](https://www.versioneye.com/user/projects/59b2e7ee0fb24f004e1a5ae9)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
