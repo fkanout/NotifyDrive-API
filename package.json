@@ -26,13 +26,13 @@
   },
   "dependencies": {
     "amqplib": "^0.5.2",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^5.0.1",
     "dotenv": "^4.0.0",
     "joi": "^13.0.2",
     "jsonwebtoken": "^8.1.0",
     "jws": "^3.1.4",
     "koa": "^2.4.1",
-    "koa-better-error-handler": "^1.3.0",
+    "koa-better-error-handler": "^10.0.0",
     "koa-bodyparser": "^4.2.0",
     "koa-json": "^2.0.2",
     "koa-logger": "^3.1.0",
@@ -40,6 +40,6 @@
     "koa2-cors": "^2.0.5",
     "mongoose": "^4.13.4",
     "request": "^2.83.0",
-    "request-promise-native": "^1.0.5"
+    "request-promise-native": "^1.0.9"
   }
 }
